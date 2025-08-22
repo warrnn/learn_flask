@@ -4,23 +4,17 @@
 > py -3 -m venv .venv
 ```
 
-<br>
-
-# Active the ennvironment
+# Active the environment
 
 ```bash
 .venv\Scripts\activate
 ```
-
-<br>
 
 # Install Flask
 
 ```bash
 pip install Flask
 ```
-
-<br>
 
 # Run the application
 
