@@ -1,6 +1,7 @@
 from flask import Flask, request, url_for
 from markupsafe import escape
 
+# Flask Instance
 app = Flask(__name__)
 
 @app.route('/')
@@ -12,14 +13,17 @@ def hello():
     name = request.args.get("name", "Flask")
     return f"Hello, {escape(name)}!"
 
+# String Parameters
 @app.route('/user/<username>')
 def profile(username):
     return f"{escape(username)}'s profile"
 
+# Integer Parameters
 @app.route('/post/<int:post_id>')
 def show_post(post_id):
     return f"Post {post_id}"
 
+# Path Parameters
 @app.route('/path/<path:subpath>')
 def show_subpath(subpath):
     return f"Subpath {escape(subpath)}"
@@ -36,6 +40,7 @@ def about():
 def login():
     return 'login'
 
+# URL Builder
 with app.test_request_context():
     print(url_for('index'))
     print(url_for('login'))
