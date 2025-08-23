@@ -77,3 +77,11 @@ def setcookie():
     resp = app.make_response("<h1>Cookie Set</h1>")
     resp.set_cookie('username', "John Doe")
     return resp
+
+# APIs with JSON
+@app.route('/me')
+def me_api():
+    return {
+        "username": "John Doe",
+        "email": "johndoe@me.com",
+    }
