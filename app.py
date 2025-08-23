@@ -59,3 +59,9 @@ def login():
 @app.route('/hello/<name>')
 def hello(name=None):
     return render_template('hello.html', person=name)
+
+# Accessing Request Data
+with app.test_request_context('/hello', method='POST'):
+    assert request.path == '/hello'
+    assert request.method == 'POST'
+    
