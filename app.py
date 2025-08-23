@@ -65,3 +65,15 @@ with app.test_request_context('/hello', method='POST'):
     assert request.path == '/hello'
     assert request.method == 'POST'
     
+# Reading Cookies
+@app.route('/readcookie')
+def cookie():
+    username = request.cookies.get('username')
+    return f"Hello, {username}"
+
+# Storing Cookies
+@app.route('/setcookie')
+def setcookie():
+    resp = app.make_response("<h1>Cookie Set</h1>")
+    resp.set_cookie('username', "John Doe")
+    return resp
