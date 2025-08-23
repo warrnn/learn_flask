@@ -36,13 +36,26 @@ def projects():
 def about():
     return 'The about page'
 
-@app.route('/login')
-def login():
-    return 'login'
-
 # URL Builder
 with app.test_request_context():
     print(url_for('index'))
-    print(url_for('login'))
-    print(url_for('login', next='/'))
+    # print(url_for('login'))
+    # print(url_for('login', next='/'))
     print(url_for('profile', username='John Doe'))
+    
+# HTTP Methods
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        return "Log In"
+    else:
+        return "Login Form"
+    
+# @app.get('/login')
+# def login_get():
+#     return "Login Form"
+
+# @app.post('/login')
+# def login_post():
+#     return "Log In"
+
